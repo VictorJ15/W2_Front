@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Para usar ngModel
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -53,6 +54,7 @@ import { HorarioCreateComponent } from './components/horarios/horario-create.com
     HttpClientModule, // Para realizar solicitudes HTTP
     FormsModule,      // Para usar ngModel
     AppRoutingModule, // Módulo de enrutamiento
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
