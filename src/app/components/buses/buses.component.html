@@ -1,0 +1,68 @@
+<div class="container">
+    <h2>Buses</h2>
+  
+    <!-- Listado de Buses -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>Modelo</th>
+          <th>Rutas Asignadas</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of buses">
+          <td>{{ bus.placa }}</td>
+          <td>{{ bus.modelo }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let ruta of bus.rutas">
+                {{ ruta.nombre }} ({{ ruta.diasAsignados }})
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button (click)="editBus(bus)" class="btn btn-warning">Editar</button>
+            <button (click)="deleteBus(bus)" [disabled]="bus.conductores.length > 0" class="btn btn-danger">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario para Agregar/Editar Bus -->
+    <div *ngIf="editingBus || newBus">
+      <h3>{{ editingBus ? 'Editar Bus' : 'Agregar Nuevo Bus' }}</h3>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="placa">Placa:</label>
+          <input type="text" id="placa" [(ngModel)]="busForm.placa" name="placa" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="modelo">Modelo:</label>
+          <input type="text" id="modelo" [(ngModel)]="busForm.modelo" name="modelo" class="form-control" required />
+        </div>
+  
+        <!-- Selección de Rutas y Asignación de Días -->
+        <div class="form-group">
+          <label for="ruta">Asignar Rutas:</label>
+          <select [(ngModel)]="selectedRuta" name="ruta" class="form-control" (change)="onRutaSelect()">
+            <option *ngFor="let ruta of rutas" [ngValue]="ruta">{{ ruta.nombreRuta }}</option>
+          </select>
+  
+          <!-- Selección de Días -->
+          <div *ngIf="selectedRuta">
+            <label>Días de la Semana:</label>
+            <div *ngFor="let dia of diasSemana">
+              <input type="checkbox" [(ngModel)]="selectedRuta.dias[dia]" name="dias" /> {{ dia }}
+            </div>
+            <button (click)="addRuta()" class="btn btn-primary">Asignar Ruta</button>
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  

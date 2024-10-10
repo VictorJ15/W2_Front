@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>{{ esEditar ? 'Editar Conductor' : 'Crear Conductor' }}</h1>
+    <form (ngSubmit)="guardarConductor()">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="conductor.nombre" name="nombre" required />
+  
+      <label for="cedula">Cédula:</label>
+      <input type="text" id="cedula" [(ngModel)]="conductor.cedula" name="cedula" required />
+  
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" [(ngModel)]="conductor.telefono" name="telefono" required />
+  
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" [(ngModel)]="conductor.direccion" name="direccion" required />
+  
+      <button type="submit">{{ esEditar ? 'Actualizar' : 'Crear' }}</button>
+    </form>
+  </div>
+  

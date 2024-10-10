@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>Rutas</h2>
+  
+    <!-- Listado de Rutas -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Estaciones</th>
+          <th>Horario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ruta of rutas">
+          <td>{{ ruta.codigo }}</td>
+          <td>{{ ruta.estaciones.join(', ') }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let dia of ruta.horario">
+                {{ dia.dia }}: {{ dia.horaInicio }} - {{ dia.horaFin }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button (click)="editRuta(ruta)" class="btn btn-warning">Editar</button>
+            <button (click)="deleteRuta(ruta)" [disabled]="ruta.buses.length > 0" class="btn btn-danger">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Formulario para Agregar/Editar Ruta -->
+    <div *ngIf="editingRuta || newRuta">
+      <h3>{{ editingRuta ? 'Editar Ruta' : 'Agregar Nueva Ruta' }}</h3>
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="codigo">Código:</label>
+          <input type="text" id="codigo" [(ngModel)]="rutaForm.codigo" name="codigo" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="estaciones">Estaciones:</label>
+          <input type="text" id="estaciones" [(ngModel)]="rutaForm.estaciones" name="estaciones" class="form-control" required />
+        </div>
+  
+        <!-- Horario de Funcionamiento -->
+        <div class="form-group">
+          <label>Horario de Funcionamiento:</label>
+          <div *ngFor="let dia of diasSemana">
+            <div class="row">
+              <div class="col">
+                <input type="checkbox" [(ngModel)]="selectedDias[dia]" name="dias" /> {{ dia }}
+              </div>
+              <div class="col">
+                <input type="time" [(ngModel)]="selectedHorario[dia].horaInicio" name="horaInicio" class="form-control" />
+              </div>
+              <div class="col">
+                <input type="time" [(ngModel)]="selectedHorario[dia].horaFin" name="horaFin" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button (click)="cancel()" class="btn btn-secondary">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  

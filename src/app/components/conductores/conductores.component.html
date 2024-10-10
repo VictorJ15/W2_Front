@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Lista de Conductores</h1>
+  
+    <!-- Botón para crear un nuevo conductor -->
+    <button (click)="crearConductor()">Crear Conductor</button>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Cédula</th>
+          <th>Teléfono</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conductor of conductores" (click)="verAsignaciones(conductor.id)">
+          <td>{{ conductor.id }}</td>
+          <td>{{ conductor.nombre }}</td>
+          <td>{{ conductor.cedula }}</td>
+          <td>{{ conductor.telefono }}</td>
+          <td>
+            <button (click)="editarConductor(conductor.id, $event)">Editar</button>
+          </td>
+          <td>
+            <button (click)="eliminarConductor(conductor.id, $event)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
