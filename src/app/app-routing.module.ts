@@ -32,7 +32,8 @@ const routes: Routes = [
     { path: 'horarios', component: HorarioListComponent },
     { path: 'horarios/create', component: HorarioCreateComponent },
 
-    { path: '', redirectTo: '/asignaciones', pathMatch: 'full' } // Redirección a la lista de asignaciones por defecto
+    { path: '', redirectTo: '/asignaciones', pathMatch: 'full' }, // Redirección a la lista de asignaciones por defecto
+    { path: '**', redirectTo: '/asignaciones' }, // Manejo de rutas no encontradas
 ];
 
 @NgModule({
