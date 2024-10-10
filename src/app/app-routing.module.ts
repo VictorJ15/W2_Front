@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AsignacionListComponent } from './components/asignaciones/asignacion-list.component';
-import { AsignacionCreateComponent } from './components/asignaciones/asignacion-create.component';
+import { AsignacionCreateComponent } from './components/asignaciones/AsignacionComponent';
 
 import { BusListComponent } from './components/buses/bus-list.component';
 import { BusCreateComponent } from './components/buses/bus-create.component';

@@ -1,0 +1,25 @@
+<div>
+    <h2>Asignaciones</h2>
+    <form (ngSubmit)="agregarAsignacion()">
+      <label for="conductorId">Conductor ID:</label>
+      <input type="number" [(ngModel)]="nuevoAsignacion.conductorId" name="conductorId" required>
+  
+      <label for="busId">Bus ID:</label>
+      <input type="number" [(ngModel)]="nuevoAsignacion.busId" name="busId" required>
+  
+      <label for="rutaId">Ruta ID:</label>
+      <input type="number" [(ngModel)]="nuevoAsignacion.rutaId" name="rutaId" required>
+  
+      <label for="dias">Días (separados por comas):</label>
+      <input type="text" [(ngModel)]="nuevoAsignacion.dias" name="dias" placeholder="Ej: Lunes, Martes" required>
+  
+      <button type="submit">Agregar Asignación</button>
+    </form>
+  
+    <h3>Lista de Asignaciones</h3>
+    <ul>
+      <li *ngFor="let asignacion of (asignaciones$ | async)">
+        ID: {{asignacion.id}}, Conductor: {{asignacion.conductorId}}, Bus: {{asignacion.busId}}, Ruta: {{asignacion.rutaId}}, Días: {{asignacion.dias.join(', ')}}
+      </li>
+    </ul>
+  </div>
