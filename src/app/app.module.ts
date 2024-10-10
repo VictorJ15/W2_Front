@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module'; // Aquí está el enrutamiento principal
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+
 
 // Componentes de Asignaciones
 import { AsignacionComponent } from './components/asignaciones/asignacionComponent';
@@ -51,6 +53,7 @@ import { HorarioCreateComponent } from './components/horarios/horario-create.com
     HttpClientModule, // Para solicitudes HTTP
     FormsModule,      // Para ngModel
     AppRoutingModule, // Módulo de enrutamiento
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
