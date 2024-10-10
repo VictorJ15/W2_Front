@@ -1,0 +1,13 @@
+<!-- src/app/buses/bus-create/bus-create.component.html -->
+<h2>Crear Bus</h2>
+<form (ngSubmit)="createBus()">
+    <div>
+        <label>Placa:</label>
+        <input type="text" [(ngModel)]="bus.placa" name="placa" required>
+    </div>
+    <div>
+        <label>Modelo:</label>
+        <input type="text" [(ngModel)]="bus.modelo" name="modelo" required>
+    </div>
+    <button type="submit">Crear Bus</button>
+</form>

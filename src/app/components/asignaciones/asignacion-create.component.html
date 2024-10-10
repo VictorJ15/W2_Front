@@ -1,0 +1,21 @@
+
+<h2>Crear Asignación</h2>
+<form (ngSubmit)="createAsignacion()">
+    <div>
+        <label>Conductor ID:</label>
+        <input type="number" [(ngModel)]="asignacion.conductor.id" name="conductorId" required>
+    </div>
+    <div>
+        <label>Ruta ID:</label>
+        <input type="number" [(ngModel)]="asignacion.ruta.id" name="rutaId" required>
+    </div>
+    <div>
+        <label>Bus ID:</label>
+        <input type="number" [(ngModel)]="asignacion.bus.id" name="busId" required>
+    </div>
+    <div>
+        <label>Días:</label>
+        <input type="text" [(ngModel)]="asignacion.dias" name="dias" required>
+    </div>
+    <button type="submit">Crear Asignación</button>
+</form>

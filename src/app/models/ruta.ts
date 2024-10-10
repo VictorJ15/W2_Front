@@ -1,6 +1,8 @@
 export interface Ruta {
     id: number;
-    nombreRuta: string;
-    origen: string;
-    destino: string;
+    codigo: string;
+    estaciones: string[];
+    busesAsignados: number[]; // IDs de buses
+    horarios: number[]; // IDs de horarios
   }
+  

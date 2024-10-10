@@ -1,5 +1,9 @@
 export interface Conductor {
     id: number;
     nombre: string;
-    licencia: string;
+    cedula: string;
+    telefono: string;
+    direccion: string;
+    busesAsignados: number[];  // IDs de buses
   }
+  

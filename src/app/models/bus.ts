@@ -2,5 +2,8 @@ export interface Bus {
     id: number;
     placa: string;
     modelo: string;
-    capacidad: number;
+    conductores: number[];  // IDs de conductores
+    conductoresAsignados: number[]; // IDs de asignaciones
+    rutasAsignadas: number[]; // IDs de rutas
   }
+  
