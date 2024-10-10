@@ -1,13 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 
 import { Component, OnInit } from '@angular/core';
 import { AsignacionService } from '../../services/asignacion.service';
 import { Asignacion } from '../../models/asignacion';
 import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-asignacion',
   templateUrl: './asignacion.component.html',
-
+  standalone: true,
+  imports: [FormsModule,CommonModule,HttpClientModule]
 })
 export class AsignacionComponent implements OnInit {
   nuevoAsignacion: Asignacion = { id: 0, conductorId: 0, busId: 0, rutaId: 0, dias: [] };

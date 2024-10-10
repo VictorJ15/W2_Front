@@ -1,6 +1,6 @@
 import { Asignacion } from './../models/asignacion';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AsignacionService {
+  private httpOptions = {
+    headers:new  HttpHeaders({
+      "Content-type": "application/json"
+    })
+  }
   private apiUrl = 'http://localhost:8080/api/asignaciones';
 
   constructor(private http: HttpClient) {}
 
   getAllAsignaciones(): Observable<Asignacion[]> {
-    return this.http.get<Asignacion[]>(this.apiUrl);
+    return this.http.get<Asignacion[]>(this.apiUrl, this.httpOptions);
   }
 
   getAsignacionById(id: number): Observable<Asignacion> {

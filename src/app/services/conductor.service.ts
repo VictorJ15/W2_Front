@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Conductor } from '../models/conductor';
 
@@ -7,12 +7,17 @@ import { Conductor } from '../models/conductor';
   providedIn: 'root'
 })
 export class ConductorService {
+  private httpOptions = {
+    headers:new  HttpHeaders({
+      "Content-type": "application/json"
+    })
+  }
   private apiUrl = 'http://localhost:8080/api/conductores';
 
   constructor(private http: HttpClient) {}
 
   getAllConductores(): Observable<Conductor[]> {
-    return this.http.get<Conductor[]>(this.apiUrl);
+    return this.http.get<Conductor[]>(this.apiUrl, this.httpOptions);
   }
 
   getConductorById(id: number): Observable<Conductor> {

@@ -2,12 +2,15 @@ import { HorarioService } from './../../services/horario.service';
 import { Horario } from './../../models/horario';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
     selector: 'app-horario-create',
     templateUrl: './horario-create.component.html',
-   
+    standalone: true,
+    imports: [FormsModule, CommonModule]
 })
 export class HorarioCreateComponent {
     horario: Horario = {

@@ -1,12 +1,14 @@
 import { HorarioService } from './../../services/horario.service';
 import { Horario } from './../../models/horario';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
     selector: 'app-horario-list',
     templateUrl: './horario-list.component.html',
-  
+    standalone: true,
+    imports: [CommonModule]
 })
 export class HorarioListComponent implements OnInit {
     horarios: Horario[] = [];

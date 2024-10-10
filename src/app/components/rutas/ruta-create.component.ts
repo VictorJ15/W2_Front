@@ -2,12 +2,15 @@ import { RutaService } from './../../services/ruta.service';
 import { Ruta } from './../../models/ruta';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
     selector: 'app-ruta-create',
     templateUrl: './ruta-create.component.html',
-   
+    standalone: true,
+    imports: [FormsModule, CommonModule]
 })
 export class RutaCreateComponent {
     ruta: Ruta = {

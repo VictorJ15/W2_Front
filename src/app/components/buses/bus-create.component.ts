@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Bus } from './../../models/bus';
 import { BusService } from './../../services/bus.service';
 // src/app/buses/bus-create/bus-create.component.ts
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-bus-create',
     templateUrl: './bus-create.component.html',
-
+    standalone: true,
+    imports: [FormsModule]
 })
 export class BusCreateComponent {
     bus: Bus = {

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { Conductor } from './../../models/conductor';
 import { ConductorService } from './../../services/conductor.service';
 import { Component } from '@angular/core';
@@ -7,7 +8,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-conductor-create',
     templateUrl: './conductor-create.component.html',
-  
+    standalone: true,
+    imports: [FormsModule]
 })
 export class ConductorCreateComponent {
     conductor: Conductor = {
