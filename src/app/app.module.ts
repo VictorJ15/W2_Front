@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module'; // Aquí está el enrutamiento principal
-
 import { AppComponent } from './app.component';
 
 // Componentes de Asignaciones
