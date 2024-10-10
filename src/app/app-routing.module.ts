@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { routes } from './app.routes'; 
 
 // Importa los componentes para las rutas
 import { AsignacionComponent } from './components/asignaciones/asignacionComponent';
