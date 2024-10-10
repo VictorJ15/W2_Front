@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Mi Aplicación';
+  title = 'Sistema de Transporte Trasmilenio';
+  message = 'Bienvenido al Sistema de Trasnporte Transmilenio';
 }
