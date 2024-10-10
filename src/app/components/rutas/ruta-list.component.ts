@@ -1,4 +1,4 @@
-// src/app/rutas/ruta-list/ruta-list.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { RutaService } from './../../services/ruta.service';
 import { Ruta } from './../../models/ruta';
@@ -6,7 +6,6 @@ import { Ruta } from './../../models/ruta';
 @Component({
     selector: 'app-ruta-list',
     templateUrl: './ruta-list.component.html',
-    styleUrls: ['./ruta-list.component.css']
 })
 export class RutaListComponent implements OnInit {
     rutas: Ruta[] = [];
