@@ -1,8 +1,8 @@
+import { AsignacionComponent } from './components/asignaciones/AsignacionComponent';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AsignacionListComponent } from './components/asignaciones/asignacion-list.component';
-import { AsignacionCreateComponent } from './components/asignaciones/AsignacionComponent';
+
 
 import { BusListComponent } from './components/buses/bus-list.component';
 import { BusCreateComponent } from './components/buses/bus-create.component';
@@ -17,8 +17,8 @@ import { HorarioListComponent } from './components/horarios/horario-list.compone
 import { HorarioCreateComponent } from './components/horarios/horario-create.component';
 
 const routes: Routes = [
-    { path: 'asignaciones', component: AsignacionListComponent },
-    { path: 'asignaciones/create', component: AsignacionCreateComponent },
+    { path: 'asignaciones', component: AsignacionComponent },
+    
 
     { path: 'buses', component: BusListComponent },
     { path: 'buses/create', component: BusCreateComponent },
@@ -32,7 +32,7 @@ const routes: Routes = [
     { path: 'horarios', component: HorarioListComponent },
     { path: 'horarios/create', component: HorarioCreateComponent },
 
-    { path: '', redirectTo: '/asignaciones', pathMatch: 'full' }
+    { path: '', redirectTo: '/asignaciones', pathMatch: 'full' } // Redirección a la lista de asignaciones por defecto
 ];
 
 @NgModule({
