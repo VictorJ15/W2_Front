@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-bus-create',
     templateUrl: './bus-create.component.html',
-    styleUrls: ['./bus-create.component.css']
+
 })
 export class BusCreateComponent {
     bus: Bus = {

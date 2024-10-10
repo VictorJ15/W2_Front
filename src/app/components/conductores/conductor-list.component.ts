@@ -6,9 +6,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-conductor-list',
     templateUrl: './conductor-list.component.html',
-    styleUrls: ['./conductor-list.component.css']
+ 
 })
 export class ConductorListComponent implements OnInit {
+eliminarConductor(arg0: any,$event: MouseEvent) {
+throw new Error('Method not implemented.');
+}
+verAsignaciones(arg0: any) {
+throw new Error('Method not implemented.');
+}
+crearConductor() {
+throw new Error('Method not implemented.');
+}
+editarConductor(arg0: any,$event: MouseEvent) {
+throw new Error('Method not implemented.');
+}
     conductores: Conductor[] = [];
 
     constructor(private conductorService: ConductorService) { }

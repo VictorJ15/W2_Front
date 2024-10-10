@@ -1,4 +1,4 @@
-import { AsignacionComponent } from './components/asignaciones/AsignacionComponent';
+import { AsignacionComponent } from './components/asignaciones/asignacionComponent';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

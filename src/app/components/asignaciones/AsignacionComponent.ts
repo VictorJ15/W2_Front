@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-asignacion',
   templateUrl: './asignacion.component.html',
-  styleUrls: ['./asignacion.component.css']
+
 })
 export class AsignacionComponent implements OnInit {
   nuevoAsignacion: Asignacion = { id: 0, conductorId: 0, busId: 0, rutaId: 0, dias: [] };

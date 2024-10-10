@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-conductor-create',
     templateUrl: './conductor-create.component.html',
-    styleUrls: ['./conductor-create.component.css']
+  
 })
 export class ConductorCreateComponent {
     conductor: Conductor = {
