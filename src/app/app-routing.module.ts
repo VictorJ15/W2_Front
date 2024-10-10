@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
-import { provideRouter, RouterModule, Routes, withComponentInputBinding } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 
 // Importa los componentes para las rutas
 import { AsignacionComponent } from './components/asignaciones/asignacionComponent';
@@ -13,7 +14,7 @@ import { RutaCreateComponent } from './components/rutas/ruta-create.component';
 import { HorarioListComponent } from './components/horarios/horario-list.component';
 import { HorarioCreateComponent } from './components/horarios/horario-create.component';
 
-export const routes: Routes = [
+const routes: Routes = [
     { path: 'asignaciones', component: AsignacionComponent },
     { path: 'buses', component: BusListComponent },
     { path: 'buses/create', component: BusCreateComponent },
