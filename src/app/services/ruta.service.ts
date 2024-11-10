@@ -1,7 +1,8 @@
+import { ErrorService } from './error.service';
 import { Ruta } from './../models/ruta';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class RutaService {
     private apiUrl = 'http://localhost:8080/api/rutas';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getAllRutas(): Observable<Ruta[]> {
         return this.http.get<Ruta[]>(this.apiUrl);
@@ -28,7 +29,10 @@ export class RutaService {
         return this.http.put<Ruta>(`${this.apiUrl}/${id}`, ruta);
     }
 
-    deleteRuta(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    deleteRuta(id: number): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
+            map(() => true),
+            catchError(this.errorService.handleDeleteError.bind(this))
+        );
     }
 }

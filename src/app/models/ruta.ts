@@ -1,8 +1,9 @@
-export interface Ruta {
-    id: number;
-    codigo: string;
-    estaciones: string[];
-    busesAsignados: number[]; // IDs de buses
-    horarios: number[]; // IDs de horarios
+export class Ruta {
+  public id?: number | null;
+  public codigo?: string | null;
+  public estaciones?: string[] | null;
+
+  public constructor(init?: Partial<Ruta>) {
+    Object.assign(this, init);
   }
-  
+}

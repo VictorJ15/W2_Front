@@ -1,19 +1,24 @@
-
-<h2>Lista de Buses</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Placa</th>
-        <th>Modelo</th>
-        <th>Acciones</th>
-    </tr>
-    <tr *ngFor="let bus of buses">
-        <td>{{ bus.id }}</td>
-        <td>{{ bus.placa }}</td>
-        <td>{{ bus.modelo }}</td>
-        <td>
-            <button (click)="deleteBus(bus.id)">Eliminar</button>
-        </td>
-    </tr>
-</table>
-<a routerLink="/buses/create">Crear Bus</a>
+<div class="container">
+    <h2>Lista de Buses</h2>
+    <button (click)="createBus()">Crear Bus</button>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <tr *ngFor="let bus of buses">
+            <td>{{ bus.id }}</td>
+            <td (click)="verAsignaciones(bus)">{{ bus.placa }}</td>
+            <td>{{ bus.modelo }}</td>
+            <td>
+                <button (click)="editBus(bus)">Editar</button>
+            </td>
+            <td>
+                <button (click)="deleteBus(bus.id!)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,21 +1,26 @@
+import { Asignacion } from './../../models/asignacion';
 import { FormsModule } from '@angular/forms';
 import { Bus } from './../../models/bus';
-import { BusService } from './../../services/bus.service';
+
 // src/app/buses/bus-list/bus-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { Router, RouterModule } from '@angular/router';
+import { BusService } from '../../services/bus.service';
 
 
 @Component({
     selector: 'app-bus-list',
     templateUrl: './bus-list.component.html',
     standalone: true,
-    imports: [FormsModule, CommonModule]
+    imports: [FormsModule, CommonModule, RouterModule]
 })
 export class BusListComponent implements OnInit {
     buses: Bus[] = [];
 
-    constructor(private busService: BusService) { }
+    constructor(private busService: BusService, private router:Router) { }
+
 
     ngOnInit(): void {
         this.loadBuses();
@@ -28,8 +33,21 @@ export class BusListComponent implements OnInit {
     }
 
     deleteBus(id: number): void {
-        this.busService.deleteBus(id).subscribe(() => {
-            this.loadBuses();
+        this.busService.deleteBus(id).subscribe((success: boolean) => {
+            if (success) {   
+                alert("Bus eliminado correctamente")                     
+                this.loadBuses();
+            } 
         });
+    }    
+    
+    createBus(): void{        
+        this.router.navigate(['buses/create']);
+    }
+    editBus(bus:Bus){        
+        this.router.navigate(['buses/edit', bus.id]);
+    }
+    verAsignaciones(bus:Bus){
+        this.router.navigate(["buses/asignaciones", bus.id]);
     }
 }

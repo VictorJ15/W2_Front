@@ -1,6 +1,7 @@
+import { ErrorService } from './error.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { Horario } from '../models/horario';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Horario } from '../models/horario';
 export class HorarioService {
   private apiUrl = 'http://localhost:8080/api/horarios';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private errorService:ErrorService) {}
 
   getAllHorarios(): Observable<Horario[]> {
     return this.http.get<Horario[]>(this.apiUrl);
@@ -27,7 +28,10 @@ export class HorarioService {
     return this.http.put<Horario>(`${this.apiUrl}/${id}`, horario);
   }
 
-  deleteHorario(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  }
+  deleteHorario(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { responseType: 'text' }).pipe(
+        map(() => true),
+        catchError(this.errorService.handleDeleteError.bind(this))
+    );
+}
 }

@@ -1,9 +1,10 @@
-export interface Bus {
-    id: number;
-    placa: string;
-    modelo: string;
-    conductores: number[];  // IDs de conductores
-    conductoresAsignados: number[]; // IDs de asignaciones
-    rutasAsignadas: number[]; // IDs de rutas
+export class Bus {
+  public id?: number | null;
+  public placa?: string | null;
+  public modelo?: string | null;
+
+  public constructor(init?: Partial<Bus>) {
+    Object.assign(this, init);
   }
   
+}

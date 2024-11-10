@@ -1,20 +1,4 @@
-<h2>Crear Conductor</h2>
-<form (ngSubmit)="createConductor()">
-    <div>
-        <label>Nombre:</label>
-        <input type="text" [(ngModel)]="conductor.nombre" name="nombre" required>
-    </div>
-    <div>
-        <label>Cédula:</label>
-        <input type="text" [(ngModel)]="conductor.cedula" name="cedula" required>
-    </div>
-    <div>
-        <label>Teléfono:</label>
-        <input type="text" [(ngModel)]="conductor.telefono" name="telefono" required>
-    </div>
-    <div>
-        <label>Dirección:</label>
-        <input type="text" [(ngModel)]="conductor.direccion" name="direccion" required>
-    </div>
-    <button type="submit">Crear Conductor</button>
-</form>
+<div class="container">
+    <h2>Crear Conductor</h2>
+    <app-conductor-forms (conductorReady)="handleConductorReady($event)"></app-conductor-forms>
+</div>

@@ -1,26 +1,4 @@
-
-<h2>Crear Horario</h2>
-<form (ngSubmit)="createHorario()">
-    <div>
-        <label>ID de Ruta:</label>
-        <input type="number" [(ngModel)]="horario.rutaId" name="rutaId" required>
-    </div>
-    <div>
-        <label>Días de la Semana:</label>
-        <input type="text" [(ngModel)]="dia" name="dia" (keyup.enter)="addDia()">
-        <ul>
-            <li *ngFor="let dia of horario.diasDeLaSemana">
-                {{ dia }} <button (click)="removeDia(dia)">Eliminar</button>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <label>Hora de Inicio:</label>
-        <input type="time" [(ngModel)]="horario.horaInicio" name="horaInicio" required>
-    </div>
-    <div>
-        <label>Hora de Fin:</label>
-        <input type="time" [(ngModel)]="horario.horaFin" name="horaFin" required>
-    </div>
-    <button type="submit">Crear Horario</button>
-</form>
+<div class="container">
+    <h2>Create Horario</h2>
+    <app-horario-forms (horarioReady)="handleHorarioReady($event)"></app-horario-forms>
+</div>

@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Conductor } from './../../models/conductor';
 import { ConductorService } from './../../services/conductor.service';
@@ -9,38 +10,34 @@ import { HttpClientModule } from '@angular/common/http';
     selector: 'app-conductor-list',
     templateUrl: './conductor-list.component.html',
     standalone: true,
-    imports: [CommonModule,HttpClientModule]
+    imports: [CommonModule, HttpClientModule, RouterModule]
 })
 export class ConductorListComponent implements OnInit {
-eliminarConductor(arg0: any,$event: MouseEvent) {
-throw new Error('Method not implemented.');
-}
-verAsignaciones(arg0: any) {
-throw new Error('Method not implemented.');
-}
-crearConductor() {
-throw new Error('Method not implemented.');
-}
-editarConductor(arg0: any,$event: MouseEvent) {
-throw new Error('Method not implemented.');
-}
+    
     conductores: Conductor[] = [];
 
-    constructor(private conductorService: ConductorService) { }
+    constructor(private conductorService: ConductorService, private router: Router) { }
 
     ngOnInit(): void {
         this.loadConductores();
     }
-
+    createConductor():void{
+        this.router.navigate(['conductores/create']);
+    }
     loadConductores(): void {
         this.conductorService.getAllConductores().subscribe((conductores: Conductor[]) => {
             this.conductores = conductores;
         });
     }
-
+    editConductor(conductor: Conductor): void {
+        this.router.navigate(["conductores/edit", conductor.id]);
+    }
     deleteConductor(id: number): void {
         this.conductorService.deleteConductor(id).subscribe(() => {
             this.loadConductores();
         });
+    }
+    verAsignaciones(conductor:Conductor): void{
+        this.router.navigate(["/conductores/asignaciones", conductor.id]);
     }
 }

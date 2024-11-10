@@ -39,9 +39,11 @@ label {
 
 input[type="text"],
 input[type="number"],
-input[type="time"] {
+input[type="time"], 
+select {
     width: 100%;
     padding: 10px;
+    padding-right: 0px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -111,4 +113,26 @@ button.edit {
 
 button.edit:hover {
     background-color: #e0a800;
+}
+/* https://angular.io/guide/form-validation#control-status-css-classes */
+.ng-valid:not(form) {
+    border-left: 5px solid #42A948;
+}
+
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442;
+}
+
+
+.alert {
+    background-color: #fed3d3;
+    color: #820000;
+    padding: 1rem;  /* https://www.sitepoint.com/understanding-and-using-rem-units-in-css/ */
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-top: .5rem;
 }

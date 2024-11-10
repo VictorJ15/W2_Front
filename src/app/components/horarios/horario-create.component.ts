@@ -1,44 +1,28 @@
 import { HorarioService } from './../../services/horario.service';
 import { Horario } from './../../models/horario';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HorarioFormsComponent } from "../../forms/horario-forms/horario-forms.component";
 
 
 @Component({
     selector: 'app-horario-create',
     templateUrl: './horario-create.component.html',
     standalone: true,
-    imports: [FormsModule, CommonModule]
+    imports: [CommonModule, HorarioFormsComponent]
 })
-export class HorarioCreateComponent {
-    horario: Horario = {
-        id: 0,
-        rutaId: 0, // ID de la ruta
-        diasDeLaSemana: [], // Días de la semana
-        horaInicio: '',
-        horaFin: ''
-    };
-
-    dia: string = ''; // Para agregar días de la semana
-
-    constructor(private horarioService: HorarioService, private router: Router) { }
-
-    createHorario(): void {
-        this.horarioService.createHorario(this.horario).subscribe(() => {
-            this.router.navigate(['/horarios']);
-        });
+export class HorarioCreateComponent implements OnInit{
+    constructor(private router:Router, private horarioService:HorarioService, private route: ActivatedRoute){}
+    ngOnInit(): void {
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'horarios';
     }
-
-    addDia(): void {
-        if (this.dia) {
-            this.horario.diasDeLaSemana.push(this.dia);
-            this.dia = '';
-        }
-    }
-
-    removeDia(dia: string): void {
-        this.horario.diasDeLaSemana = this.horario.diasDeLaSemana.filter(d => d !== dia);
+    returnUrl :String|undefined;
+    handleHorarioReady(horario:Horario){
+        console.log(horario);
+        this.horarioService.createHorario(horario).subscribe(()=>{
+            this.router.navigate([this.returnUrl])
+        })
     }
 }
