@@ -18,27 +18,30 @@ import { BusCreateComponent } from './components/buses/bus-create/bus-create.com
 import { AsignacionesListComponent } from './components/asignaciones/asignaciones-list/asignaciones-list.component';
 import { AsignacionesCreateComponent } from './components/asignaciones/asignaciones-create/asignaciones-create.component';
 import { AsignacionesEditComponent } from './components/asignaciones/asignaciones-edit/asignaciones-edit.component';
+import { LoginComponent } from './security/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    { path: 'buses', component: BusListComponent },
-    { path: 'buses/create', component: BusCreateComponent },
-    { path: 'buses/edit/:id', component: BusEditComponent},
-    { path: 'buses/asignaciones/:id', component: BusAsignacionesComponent },
-    { path: 'conductores', component: ConductorListComponent },
-    { path: 'conductores/create', component: ConductorCreateComponent },
-    { path: 'conductores/edit/:id', component: EditConductorComponent },
-    { path: 'conductores/asignaciones/:id', component: ConductorAsignacionesComponent },
-    { path: 'rutas', component: RutaListComponent },
-    { path: 'rutas/create', component: RutaCreateComponent },
-    { path: 'rutas/edit/:id', component: RutasEditComponent },
-    { path: 'rutas/asignaciones/:id', component:RutasAsignacionesComponent },
-    { path: 'horarios', component: HorarioListComponent },
-    { path: 'horarios/create', component: HorarioCreateComponent },
-    { path: 'horarios/edit/:id', component: HorariosEditComponent },
-    { path: 'horarios/asignaciones/:id', component:HorariosAsignacionesComponent },
-    { path: 'asignaciones', component: AsignacionesListComponent},
-    { path: 'asignaciones/create', component: AsignacionesCreateComponent},
-    { path: 'asignaciones/edit/:id', component: AsignacionesEditComponent},
-    { path: '', redirectTo: '/asignaciones', pathMatch: 'full' }, // Redirección por defecto
-    { path: '**', redirectTo: '/asignaciones' }, // Manejo de rutas no encontradas];
+    { path: 'buses', component: BusListComponent, canActivate:[AuthGuard] },
+    { path: 'buses/create', component: BusCreateComponent, canActivate:[AuthGuard] },
+    { path: 'buses/edit/:id', component: BusEditComponent, canActivate:[AuthGuard]},
+    { path: 'buses/asignaciones/:id', component: BusAsignacionesComponent, canActivate:[AuthGuard] },
+    { path: 'conductores', component: ConductorListComponent, canActivate:[AuthGuard] },
+    { path: 'conductores/create', component: ConductorCreateComponent, canActivate:[AuthGuard] },
+    { path: 'conductores/edit/:id', component: EditConductorComponent, canActivate:[AuthGuard] },
+    { path: 'conductores/asignaciones/:id', component: ConductorAsignacionesComponent, canActivate:[AuthGuard] },
+    { path: 'rutas', component: RutaListComponent, canActivate:[AuthGuard] },
+    { path: 'rutas/create', component: RutaCreateComponent, canActivate:[AuthGuard] },
+    { path: 'rutas/edit/:id', component: RutasEditComponent, canActivate:[AuthGuard] },
+    { path: 'rutas/asignaciones/:id', component:RutasAsignacionesComponent, canActivate:[AuthGuard] },
+    { path: 'horarios', component: HorarioListComponent, canActivate:[AuthGuard] },
+    { path: 'horarios/create', component: HorarioCreateComponent, canActivate:[AuthGuard] },
+    { path: 'horarios/edit/:id', component: HorariosEditComponent, canActivate:[AuthGuard] },
+    { path: 'horarios/asignaciones/:id', component:HorariosAsignacionesComponent, canActivate:[AuthGuard] },
+    { path: 'asignaciones', component: AsignacionesListComponent, canActivate:[AuthGuard]},
+    { path: 'asignaciones/create', component: AsignacionesCreateComponent, canActivate:[AuthGuard]},
+    { path: 'asignaciones/edit/:id', component: AsignacionesEditComponent, canActivate:[AuthGuard]},
+    { path: 'login', component: LoginComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirección por defecto
+    { path: '**', redirectTo: '/login' }, // Manejo de rutas no encontradas];
 ]
